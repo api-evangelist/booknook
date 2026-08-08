@@ -1,0 +1,106 @@
+generated: '2026-08-08'
+method: searched
+source: https://help.booknook.com/product-updates/
+name: BookNook product updates
+url: https://help.booknook.com/product-updates/
+scope: >-
+  Customer-facing platform and dashboard changes. This is a PRODUCT changelog, not an API
+  changelog — BookNook publishes no API changelog because it publishes no public API.
+scheme: none
+current_version: null
+dated: false
+dates_note: >-
+  Entries are presented newest-first across four paginated pages, but the served HTML carries
+  no publication date (no <time> element, no datetime attribute, no article:published_time
+  meta, no JSON-LD datePublished). help.booknook.com/wp-json/wp/v2/posts and /feed/ both
+  return 403, so no machine-readable dates could be harvested. Ordering below preserves the
+  published order; no date is asserted.
+pagination:
+  pages: 4
+  index: https://help.booknook.com/product-updates/
+x-evidence:
+  fetched: '2026-08-08'
+  url: https://help.booknook.com/product-updates/
+  http_status: 200
+  content_type: text/html; charset=UTF-8
+  blocked:
+  - url: https://help.booknook.com/wp-json/wp/v2/posts
+    http_status: 403
+  - url: https://help.booknook.com/feed/
+    http_status: 403
+
+entries:
+- title: Introducing the Session Participation Timeline
+  url: https://help.booknook.com/introducing-the-session-participation-timeline/
+  date: null
+  type: addition
+- title: Filter Student Reports by Date
+  url: https://help.booknook.com/filter-student-reports-by-date/
+  date: null
+  type: addition
+- title: 'New Feature: Self-Serve Progress Reports'
+  url: https://help.booknook.com/new-feature-self-serve-progress-reports/
+  date: null
+  type: addition
+- title: Math Engagement and Understanding Scores Display in the BookNook Dashboard
+  url: https://help.booknook.com/math-engagement-and-understanding-scores-display-in-the-booknook-dashboard/
+  date: null
+  type: addition
+- title: New District Insights Tab on the BookNook Dashboard
+  url: https://help.booknook.com/new-district-insights-tab-on-the-booknook-dashboard/
+  date: null
+  type: addition
+- title: Student Emoji Check-Ins Now Include Math Sessions
+  url: https://help.booknook.com/student-emoji-check-ins-now-include-math-sessions/
+  date: null
+  type: addition
+- title: 'Update: Student Attendance Export'
+  url: https://help.booknook.com/update-student-attendance-export/
+  date: null
+  type: change
+- title: 'New in the BookNook Math Classroom: Student Exit Form'
+  url: https://help.booknook.com/new-in-the-booknook-math-classroom-student-exit-form/
+  date: null
+  type: addition
+- title: New! Export Math Performance
+  url: https://help.booknook.com/new-export-math-performance/
+  date: null
+  type: addition
+- title: New! Lesson Band Progress Metric in the BookNook Dashboard
+  url: https://help.booknook.com/new-lesson-band-progress-metric-in-the-booknook-dashboard/
+  date: null
+  type: addition
+- title: New Tooltips on the BookNook Dashboard
+  url: https://help.booknook.com/new-tooltips-on-the-booknook-dashboard/
+  date: null
+  type: addition
+- title: More Enhancements to the BookNook Dashboard
+  url: https://help.booknook.com/more-enhancements-to-the-booknook-dashboard/
+  date: null
+  type: change
+- title: New Attendance Export in the BookNook Dashboard
+  url: https://help.booknook.com/new-attendance-export-in-the-booknook-dashboard/
+  date: null
+  type: addition
+- title: BookNook Dashboard Overview Refresh
+  url: https://help.booknook.com/booknook-dashboard-overview-refresh/
+  date: null
+  type: change
+- title: New 2nd-3rd Grade Phonics Lessons Now Available
+  url: https://help.booknook.com/new-2nd-3rd-grade-phonics-lessons-now-available/
+  date: null
+  type: addition
+- title: 'BookNook Dashboard Session Tab Update: Refined Session Details and Enhanced Navigation'
+  url: https://help.booknook.com/booknook-dashboard-session-tab-update-refined-session-details-enhanced-navigation/
+  date: null
+  type: change
+- title: Updated Login Page
+  url: https://help.booknook.com/updated-login-page/
+  date: null
+  type: change
+
+breaking_changes_published: false
+gaps:
+- No dates on any entry; a reader cannot tell whether an update shipped last week or two years ago.
+- No API changelog, because no public API contract exists to version.
+- The RSS feed and WordPress REST API are 403-blocked, so the changelog is not machine-consumable.

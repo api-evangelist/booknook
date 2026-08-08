@@ -1,0 +1,184 @@
+generated: '2026-08-08'
+method: searched
+source: https://www.booknook.com/privacy-policy
+name: BookNook conformance and compliance posture
+summary: >-
+  BookNook is an education-sector operator, so its published compliance surface is student-data
+  regulation rather than API standards. It states FERPA, COPPA and PPRA compliance and describes
+  its role as a FERPA "School Official", and it carries an AICPA SOC service-organization badge
+  in its site footer with no named report, no report type, and no trust center behind it. It
+  conforms to no API standard we could verify, because it publishes no machine-readable contract.
+docs:
+  privacy_policy: https://www.booknook.com/privacy-policy
+  terms_of_service: https://www.booknook.com/terms-of-service
+
+conformance:
+
+- id: ferpa
+  name: Family Educational Rights and Privacy Act
+  conforms: true
+  evidence: >-
+    Privacy policy, section 9 "Schools and Student Use (FERPA/COPPA/PPRA)": "BookNook complies
+    with FERPA, COPPA, PPRA and related student privacy laws. When providing services to a
+    School or district, BookNook acts as a 'School Official' under FERPA".
+  source: https://www.booknook.com/privacy-policy
+  method: searched
+
+- id: coppa
+  name: Children's Online Privacy Protection Act
+  conforms: true
+  evidence: >-
+    Privacy policy carries a dedicated Children's Privacy Notice (COPPA) section covering users
+    under 13, and section 9 states COPPA compliance.
+  source: https://www.booknook.com/privacy-policy
+  method: searched
+
+- id: ppra
+  name: Protection of Pupil Rights Amendment
+  conforms: true
+  evidence: 'Privacy policy section 9 states compliance with PPRA alongside FERPA and COPPA.'
+  source: https://www.booknook.com/privacy-policy
+  method: searched
+
+- id: ccpa-cpra
+  name: California Consumer Privacy Act / CPRA
+  conforms: true
+  evidence: >-
+    Privacy policy section 11.A "California (CCPA/CPRA) - Non-Student Users" grants know/access/
+    correct/delete rights to California residents outside the FERPA student context.
+  source: https://www.booknook.com/privacy-policy
+  method: searched
+
+- id: gdpr
+  name: EU/UK General Data Protection Regulation
+  conforms: partial
+  evidence: >-
+    Privacy policy section 11.C is titled "GDPR/EEA/UK (If Applicable)" and enumerates access,
+    rectification, erasure, restriction, objection, portability and consent-withdrawal rights.
+    The "if applicable" hedge and the US-transfer notice indicate a US-primary operation.
+  source: https://www.booknook.com/privacy-policy
+  method: searched
+
+- id: soc2
+  name: SOC 2 / AICPA SOC for Service Organizations
+  conforms: unverified
+  evidence: >-
+    An AICPA SOC service-organization badge image (21972-312_SOC_NonCPA.png) is rendered in the
+    site footer next to the Terms of Service and Privacy Policy links, with alt text equal to the
+    filename. No report type (Type 1 vs Type 2), no scope, no audit period, no auditor, no trust
+    center and no report-request path is published anywhere on the public site. Presence of the
+    badge is recorded; a SOC 2 attestation is NOT asserted.
+  source: https://www.booknook.com/booknook-reading
+  method: searched
+
+- id: sso-clever-instant-login
+  name: Clever Instant Login (SSO)
+  conforms: true
+  role: consumer
+  evidence: >-
+    Clever app gallery: "BookNook offers SSO through Clever Instant Login". BookNook's own help
+    center publishes Clever Staff & Admin Login and Clever Student Login articles.
+  source: https://www.clever.com/app-gallery/booknook
+  method: searched
+
+- id: rostering-clever-secure-sync
+  name: Clever Secure Sync (rostering / account provisioning)
+  conforms: true
+  role: consumer
+  evidence: >-
+    Clever app gallery: "BookNook rosters and provisions accounts through Clever Secure Sync".
+  source: https://www.clever.com/app-gallery/booknook
+  method: searched
+
+- id: sso-classlink
+  name: ClassLink single sign-on
+  conforms: true
+  role: consumer
+  evidence: >-
+    Help center publishes ClassLink Staff & Admin Login and ClassLink Student Login articles;
+    the privacy policy names ClassLink among its SSO providers.
+  source: https://help.booknook.com/knowledge-base/classlink-staff-admin-login/
+  method: searched
+
+- id: oneroster
+  name: 1EdTech OneRoster
+  conforms: unverified
+  evidence: >-
+    Not claimed anywhere on BookNook's public surface. ClassLink rostering is commonly delivered
+    over OneRoster, but BookNook does not state OneRoster conformance and no certification listing
+    was found. Recorded as unverified rather than inferred.
+  method: searched
+
+- id: ed-fi
+  name: Ed-Fi Data Standard / ODS API
+  conforms: unverified
+  role: consumer
+  evidence: >-
+    Third-party state data-hub material describes BookNook as a tutoring-system vendor reachable
+    over an Ed-Fi API integration profile, but the referenced listing page returned 404 at probe
+    time and BookNook makes no Ed-Fi claim on its own surface. Not asserted.
+  method: searched
+
+- id: openapi
+  name: OpenAPI
+  conforms: false
+  evidence: >-
+    No OpenAPI document at any probed location on www.booknook.com, app.booknooklearning.com or
+    api.booknooklearning.com. See x-coverage in apis.yml.
+  method: probed
+
+- id: rfc9457
+  name: RFC 9457 Problem Details for HTTP APIs
+  conforms: false
+  evidence: >-
+    The public API root returns a bespoke {success, message, data} envelope and a bare {} body on
+    404, not application/problem+json.
+  source: https://api.booknooklearning.com/
+  method: probed
+
+- id: rfc9116
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: '/.well-known/security.txt returns 404 on every BookNook host probed.'
+  method: probed
+
+- id: oauth2
+  name: OAuth 2.0 authorization server metadata
+  conforms: false
+  evidence: >-
+    /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource return 404
+    on www.booknook.com and api.booknooklearning.com.
+  method: probed
+
+- id: oidc
+  name: OpenID Connect discovery
+  conforms: false
+  evidence: >-
+    /.well-known/openid-configuration returns 404 on www.booknook.com and api.booknooklearning.com.
+    BookNook consumes identity from Google, Clever and ClassLink rather than acting as an OP.
+  method: probed
+
+compliance_program:
+  published: true
+  form: regulatory statements inside the privacy policy
+  regimes:
+  - FERPA
+  - COPPA
+  - PPRA
+  - CCPA/CPRA
+  - GDPR (if applicable)
+  certifications_named: []
+  trust_center: null
+  security_controls_stated:
+  - encryption in transit and at rest
+  - role-based access controls
+  - continuous monitoring
+  - periodic security reviews
+  - regular staff data-protection training
+  security_controls_source: https://www.booknook.com/privacy-policy
+  privacy_contact: privacy@booknook.com
+
+gaps:
+- The AICPA SOC footer badge names no report, period, scope or auditor — it is a logo, not an attestation.
+- No trust center, no security page, no /.well-known/security.txt, no vulnerability-disclosure path.
+- No API standard conformance is assertable because no machine-readable contract is published.

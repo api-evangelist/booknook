@@ -1,0 +1,123 @@
+generated: '2026-08-08'
+method: probed
+source: probe of BookNook hosts, 2026-08-08
+name: BookNook /.well-known/ probe record
+summary: >-
+  BookNook publishes NO /.well-known/ documents on any host. This file is the probe record, not
+  a catalog — it carries no WellKnown or SecurityTxt pointer in apis.yml because there is nothing
+  to point at. An honest zero.
+result: none
+
+hosts:
+
+- host: www.booknook.com
+  role: marketing site (HubSpot CMS behind Cloudflare)
+  soft_404: false
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    content_type: text/html
+  - path: /.well-known/openid-configuration
+    status: 404
+    content_type: text/html
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    content_type: text/html
+  - path: /.well-known/api-catalog
+    status: 404
+    content_type: text/html
+  - path: /.well-known/agent-card.json
+    status: 404
+    content_type: text/html
+  - path: /.well-known/agent.json
+    status: 404
+    content_type: text/html
+  - path: /security.txt
+    status: 404
+    content_type: text/html
+  - path: /llms.txt
+    status: 404
+    content_type: text/html
+  - path: /robots.txt
+    status: 200
+    content_type: text/plain
+  - path: /sitemap.xml
+    status: 200
+    content_type: application/xml
+
+- host: api.booknooklearning.com
+  role: production API service (self-identifies as "BookNook API")
+  soft_404: false
+  soft_404_note: 'Unknown paths return a real 404 with body {} — statuses below are trustworthy.'
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    content_type: application/json
+  - path: /.well-known/openid-configuration
+    status: 404
+    content_type: application/json
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    content_type: application/json
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    content_type: application/json
+  - path: /.well-known/api-catalog
+    status: 404
+    content_type: application/json
+  - path: /.well-known/agent-card.json
+    status: 404
+    content_type: application/json
+  - path: /.well-known/agent.json
+    status: 404
+    content_type: application/json
+
+- host: app.booknooklearning.com
+  role: student/tutor single-page application
+  soft_404: true
+  soft_404_note: >-
+    DO NOT TRUST STATUSES ON THIS HOST. Every path returns 200 text/html with the identical
+    4,354-byte SPA shell. Verified by control diff: /openapi.json and /zzz-does-not-exist-12345
+    returned byte-identical bodies. All /.well-known/* 200s here are false positives, including
+    /.well-known/agent-card.json and /.well-known/agent.json — no agent card exists.
+  paths:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    verdict: soft-404 (SPA shell)
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    verdict: soft-404 (SPA shell)
+  - path: /.well-known/agent.json
+    status: 200
+    content_type: text/html
+    verdict: soft-404 (SPA shell)
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: text/html
+    verdict: soft-404 (SPA shell)
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html
+    verdict: soft-404 (SPA shell)
+  - path: /robots.txt
+    status: 200
+    content_type: text/plain
+    verdict: 'real: User-agent * with an empty Disallow'
+
+- host: help.booknook.com
+  role: customer help center (WordPress)
+  soft_404: false
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    content_type: text/html
+  - path: /llms.txt
+    status: 404
+    content_type: text/html
+  - path: /security.txt
+    status: 404
+    content_type: text/html
+
+files: []

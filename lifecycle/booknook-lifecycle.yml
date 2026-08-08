@@ -1,0 +1,95 @@
+generated: '2026-08-08'
+method: searched
+source: https://booknook.statuspage.io/
+name: BookNook lifecycle and operational posture
+summary: >-
+  BookNook publishes an Atlassian Statuspage and a dated-order product update stream on its
+  customer help site. It publishes no API versioning policy, no deprecation or Sunset policy,
+  and no SLA — consistent with having no public developer program. The production API service
+  is nevertheless a named component on the public status page.
+
+status_page:
+  url: https://booknook.statuspage.io/
+  provider: Atlassian Statuspage
+  page_id: 9v2wqhjs9wmn
+  time_zone: America/Los_Angeles
+  components:
+  - name: API
+    status: operational
+  - name: Website
+    status: operational
+  open_incidents: 0
+  scheduled_maintenances: 0
+  api:
+    summary: https://booknook.statuspage.io/api/v2/summary.json
+    status: https://booknook.statuspage.io/api/v2/status.json
+    components: https://booknook.statuspage.io/api/v2/components.json
+  x-evidence:
+    fetched: '2026-08-08'
+    url: https://booknook.statuspage.io/api/v2/status.json
+    http_status: 200
+    content_type: application/json
+    observed: 'page.name "BookNook", indicator "none", description "All Systems Operational"'
+  note: >-
+    The status page reports its own last update as 2025-10-28; no incident history was
+    published in the summary feed at probe time.
+
+product_updates:
+  url: https://help.booknook.com/product-updates/
+  scope: platform and dashboard features (customer-facing), not API changes
+  dated: false
+  note: >-
+    Entries are ordered newest-first across four pages but the served HTML carries no
+    publication date, no <time> element, and no article:published_time meta. The WordPress
+    REST and RSS endpoints are blocked (403), so no machine-readable dates are available.
+  x-evidence:
+    fetched: '2026-08-08'
+    url: https://help.booknook.com/product-updates/
+    http_status: 200
+    content_type: text/html
+
+versioning:
+  policy_published: false
+  scheme: unknown
+  note: >-
+    No public API versioning policy. The production API root returns an unversioned banner
+    and no version endpoint (GET /version -> 404).
+
+deprecation:
+  policy_published: false
+  sunset_header: unknown
+  deprecation_header: unknown
+  rfc8594: unknown
+  note: >-
+    No deprecation or Sunset policy is published. Not assessable without a public contract.
+
+sla:
+  published: false
+  note: >-
+    No public SLA or uptime commitment. Terms of Service (https://www.booknook.com/terms-of-service)
+    is a consumer/district agreement and does not state availability targets.
+
+api_service:
+  host: api.booknooklearning.com
+  reachable: true
+  self_identifies_as: 'BookNook API'
+  documented_publicly: false
+  x-evidence:
+    fetched: '2026-08-08'
+    url: https://api.booknooklearning.com/
+    http_status: 200
+    content_type: application/json
+    observed: '{"success":true,"message":"BookNook API: <timestamp>","data":{}}'
+  probes:
+  - path: /health
+    status: 200
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /api-docs
+    status: 404
+  - path: /graphql
+    status: 404
+  - path: /version
+    status: 404

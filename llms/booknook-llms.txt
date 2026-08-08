@@ -1,0 +1,90 @@
+---
+generated: '2026-08-08'
+method: generated
+source: apis.yml + probed BookNook public surface (no /llms.txt published — 404 on www.booknook.com and help.booknook.com)
+---
+
+# BookNook
+
+> BookNook is a K-8 high-impact tutoring company that delivers live 1:1 and small-group virtual
+> instruction in reading and math through its own online learning platform. Schools and districts
+> license the platform and either use BookNook's tutor corps or run sessions with their own staff.
+> **BookNook publishes no public API, no developer portal, and no machine-readable contract.**
+
+## What an agent should know first
+
+- There is **no public BookNook API**. Do not attempt to construct calls against
+  `api.booknooklearning.com` — it is the platform's own backend, undocumented, and not offered
+  to third parties. Its root returns `{"success":true,"message":"BookNook API: <timestamp>","data":{}}`
+  and it is listed as an "API" component on the public status page, but no reference, no
+  OpenAPI, no GraphQL SDL and no MCP server exists.
+- There is **no OpenAPI, AsyncAPI, GraphQL SDL, Postman collection, JSON Schema, SDK, CLI or
+  agent card** anywhere on BookNook's public surface (probed 2026-08-08).
+- Access to the product is through district/school licensing, not self-serve signup. The public
+  entry point is a demo request, not an API key.
+- Integration with BookNook happens **through partner platforms**, not through a BookNook API:
+  Clever Instant Login (SSO), Clever Secure Sync (rostering and account provisioning), and
+  ClassLink SSO. BookNook is the consumer of those APIs.
+
+## Product
+
+- [BookNook Reading](https://www.booknook.com/booknook-reading): K-8 reading tutoring.
+- [BookNook Math](https://www.booknook.com/booknook-math): K-8 math tutoring.
+- [High-Impact Tutoring](https://www.booknook.com/high-impact-tutoring): the program model —
+  1:1 and small-group virtual sessions integrated with classroom instruction.
+- [Our Impact](https://www.booknook.com/impact): efficacy and outcomes claims.
+- [Outcomes-Based Contracts](https://www.booknook.com/outcomes-based-contracts): pay-for-results
+  contracting model for districts.
+- [English Learners](https://www.booknook.com/booknook-high-impact-tutoring-designed-for-english-learners)
+
+## Platform and sign-in
+
+- [Student login](https://app.booknooklearning.com/student/login)
+- [Tutor/guide login](https://app.booknooklearning.com/tutor/login)
+- Educators sign in manually or via Clever or ClassLink. See the help center login articles.
+
+## Documentation (end-user only — there is no API reference)
+
+- [Knowledge Base](https://help.booknook.com/knowledge-base/): device requirements, joining and
+  ending sessions, student usernames, password reset, progress reports, session details,
+  lesson band / math cluster, Clever and ClassLink login.
+- [Frequently Asked Questions](https://help.booknook.com/frequently-asked-questions-about-booknook-tutoring/)
+- [Customer Resources](https://help.booknook.com/customer-resources/)
+- [Product Updates](https://help.booknook.com/product-updates/): dashboard and platform change
+  stream. Newest-first but **undated** — no publication date is served in the HTML, and the RSS
+  and WordPress REST endpoints return 403.
+- [Support portal](https://support.booknook.com/s/)
+
+## Operations
+
+- [Status page](https://booknook.statuspage.io/) — Atlassian Statuspage, components: API, Website.
+  Machine-readable: `/api/v2/status.json`, `/api/v2/summary.json`, `/api/v2/components.json`.
+
+## Compliance and data handling
+
+- [Privacy Policy](https://www.booknook.com/privacy-policy) — states FERPA, COPPA and PPRA
+  compliance; BookNook acts as a FERPA "School Official" for schools and districts. Includes a
+  Children's Privacy Notice (COPPA), CCPA/CPRA rights for non-student California residents, and
+  GDPR/EEA/UK rights where applicable. Security controls stated: encryption in transit and at
+  rest, role-based access controls, continuous monitoring, periodic security reviews, staff
+  training. Privacy contact: privacy@booknook.com.
+- [Terms of Service](https://www.booknook.com/terms-of-service)
+- An AICPA SOC service-organization badge appears in the site footer. **No report type, scope,
+  audit period, auditor or trust center is published** — treat it as a logo, not an attestation.
+- There is **no security.txt, no vulnerability-disclosure policy and no bug bounty**.
+
+## Company
+
+- [About](https://www.booknook.com/about)
+- [Blog — BookNook Insights](https://blog.booknook.com/) ([RSS](https://blog.booknook.com/rss.xml))
+- [Contact](https://www.booknook.com/contact-us)
+- [Careers](https://www.booknook.com/careers) / [Tutor jobs](https://apply.booknook.com/online-tutoring-jobs)
+- [GitHub organization](https://github.com/BookNook) — one public repository, a fork of
+  `node-db-migrate`. No BookNook client library is published there or on npm, PyPI, RubyGems,
+  Packagist, crates.io or Maven Central.
+
+## If you need data out of BookNook
+
+Use the district dashboard exports documented in the help center (attendance export, math
+performance export, self-serve progress reports) or ask BookNook directly via
+https://www.booknook.com/contact-us. There is no programmatic alternative published.

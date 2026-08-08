@@ -1,0 +1,57 @@
+generated: '2026-08-08'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + discovered BookNook hosts
+hosts:
+- host: www.booknook.com
+  role: marketing site
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 14 06:08:31 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.booknooklearning.com
+  role: production API service
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan  8 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_preload: true
+  hsts_include_subdomains: true
+  response_headers:
+    x-content-type-options: nosniff
+    x-frame-options: SAMEORIGIN
+    referrer-policy: no-referrer
+    content-security-policy: present
+- host: app.booknooklearning.com
+  role: student/tutor single-page application
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan  8 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: help.booknook.com
+  role: customer help center
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 18 05:15:26 2026 GMT
+  hsts: false
+domains:
+- domain: booknook.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: booknooklearning.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+notes:
+- booknooklearning.com apex fails to serve (525 SSL handshake failure at the edge); www.booknooklearning.com redirects to www.booknook.com.
+- No CAA record on either registrable domain, and DNSSEC is not signed on either.
+- DMARC is published at p=quarantine on both domains, not p=reject.
+- help.booknook.com serves no HSTS header.
+- The production API service sets a complete security-header set (CSP, nosniff, SAMEORIGIN, no-referrer) and HSTS with preload.

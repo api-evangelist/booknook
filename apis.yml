@@ -1,17 +1,36 @@
 aid: booknook
 name: BookNook
-description: 'BookNook is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  BookNook is a K-8 high-impact tutoring company that delivers live 1:1 and small-group
+  virtual instruction in reading and math through its own online learning platform. Schools
+  and districts license the platform and either use BookNook's trained tutor corps or run
+  sessions with their own staff; educators work from a district dashboard that reports
+  attendance, session detail, lesson-band progress, and math engagement and understanding
+  scores. Students and staff reach the platform at app.booknooklearning.com and sign in
+  manually or through Clever Instant Login and ClassLink single sign-on, with district
+  rosters provisioned by Clever Secure Sync. BookNook operates a production API service
+  (api.booknooklearning.com, listed as an "API" component on its public status page), but
+  it is the platform's own backend — BookNook publishes no developer portal, no API
+  reference, and no machine-readable contract, and its integration surface is consumed
+  from partner platforms (Clever, ClassLink, Ed-Fi) rather than published as its own.
 url: https://raw.githubusercontent.com/api-evangelist/booknook/refs/heads/main/apis.yml
+image: https://www.booknook.com/hubfs/booknook-512-icon.png
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-08'
 modified: '2026-08-08'
 tags:
 - Company
+- Education
+- EdTech
+- Tutoring
+- K-12
+- Learning Platform
+- Reading
+- Mathematics
+- Student Data
+- Rostering
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +38,73 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/booknook-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/booknook_stock/
+  url: https://www.booknook.com/
+- type: About
+  url: https://www.booknook.com/about
+- type: Support
+  url: https://support.booknook.com/s/
+- type: HelpCenter
+  url: https://help.booknook.com/knowledge-base/
+- type: Blog
+  url: https://blog.booknook.com/
+- type: BlogRSS
+  url: https://blog.booknook.com/rss.xml
+- type: StatusPage
+  url: https://booknook.statuspage.io/
+- type: ChangeLog
+  url: https://help.booknook.com/product-updates/
+- type: Login
+  url: https://app.booknooklearning.com/student/login
+- type: TermsOfService
+  url: https://www.booknook.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.booknook.com/privacy-policy
+- type: GitHubOrganization
+  url: https://github.com/BookNook
+- type: Contact
+  url: https://www.booknook.com/contact-us
+- type: Careers
+  url: https://www.booknook.com/careers
+- type: Lifecycle
+  url: lifecycle/booknook-lifecycle.yml
+- type: ChangeLog
+  url: changelog/booknook-changelog.yml
+- type: Conformance
+  url: conformance/booknook-conformance.yml
+- type: Compliance
+  url: conformance/booknook-conformance.yml
+- type: LLMsTxt
+  url: llms/booknook-llms.txt
+x-enrichment:
+  date: '2026-08-08'
+  status: minimal
+  artifacts_added: 6
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    BookNook runs a production API service — api.booknooklearning.com answers 200 with
+    {"success":true,"message":"BookNook API: ..."} and "API" is a named component on its public
+    Statuspage — but it is the tutoring platform's own backend, not a product: no developer
+    portal, no reference, no OpenAPI/GraphQL/MCP/agent card at any probed path on that host or
+    on www.booknook.com, no SDK on any registry, and the GitHub org's single public repo is a
+    fork of node-db-migrate; districts integrate through Clever Secure Sync and ClassLink SSO,
+    where BookNook is the consumer of someone else's API.
+  evidence:
+  - url: https://api.booknooklearning.com/
+    status: 200
+  - url: https://api.booknooklearning.com/openapi.json
+    status: 404
+  - url: https://api.booknooklearning.com/graphql
+    status: 404
+  - url: https://www.booknook.com/llms.txt
+    status: 404
+  - url: https://www.booknook.com/.well-known/agent-card.json
+    status: 404
+  - url: https://booknook.statuspage.io/api/v2/components.json
+    status: 200
+  checked: '2026-08-08'
